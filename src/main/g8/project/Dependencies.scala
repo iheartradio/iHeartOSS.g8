@@ -6,9 +6,10 @@ object Dependencies {
     val specs2 = "3.6.6"
   }
 
-
   val shapeless = Seq("com.chuusai" %% "shapeless" % "2.2.5")
+
   val cat = Seq("org.spire-math" %% "cats" % "0.3.0")
+
   val test = Seq(
     "org.specs2" %% "specs2-core" % Versions.specs2 % "test",
     "org.specs2" %% "specs2-mock" % Versions.specs2 % "test"
@@ -24,7 +25,6 @@ object Dependencies {
   )
 
   val settings = commonSettings ++ Seq(
-    libraryDependencies ++= shapeless ++ cat,
     resolvers ++= Seq(
       Resolver.sonatypeRepo("releases"),
       Resolver.sonatypeRepo("snapshots"),

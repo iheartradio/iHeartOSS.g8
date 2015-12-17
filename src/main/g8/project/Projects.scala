@@ -16,7 +16,8 @@ object Projects extends Build {
     .settings(Format.settings:_*)
 
   lazy val test = project.in(file("test"))
-    .dependsOn(core % "compile->compile;test->test")
+    .dependsOn(core)
+    .aggregate(core)
     .settings(moduleName := "$name;format="normalize"$-tests")
     .settings(Common.settings:_*)
     .settings(Common.noPublishing: _*)
@@ -25,13 +26,12 @@ object Projects extends Build {
     .settings(Testing.settings:_*)
 
   lazy val examples = project.in(file("example"))
-    .dependsOn(core % "compile->compile;test->test")
+    .dependsOn(core)
+    .aggregate(core)
     .settings(moduleName := "$name;format="normalize"$-examples")
     .settings(Common.settings:_*)
     .settings(Common.noPublishing: _*)
     .settings(Format.settings:_*)
-
-
 
 
 }
