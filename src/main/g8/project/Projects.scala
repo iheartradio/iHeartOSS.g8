@@ -4,7 +4,7 @@ import Keys._
 object Projects extends Build {
   lazy val $name;format="camel"$ = project.in(file("."))
     .settings(moduleName := "root")
-    .aggregate(core, test)
+    .aggregate(core, tests)
     .settings(Common.settings:_*)
     .settings(Common.noPublishing: _*)
 
@@ -15,7 +15,7 @@ object Projects extends Build {
     .settings(Publish.settings:_*)
     .settings(Format.settings:_*)
 
-  lazy val test = project.in(file("test"))
+  lazy val tests = project.in(file("tests"))
     .dependsOn(core)
     .aggregate(core)
     .settings(moduleName := "$name;format="normalize"$-tests")
@@ -25,7 +25,7 @@ object Projects extends Build {
     .settings(Format.settings:_*)
     .settings(Testing.settings:_*)
 
-  lazy val examples = project.in(file("example"))
+  lazy val examples = project.in(file("examples"))
     .dependsOn(core)
     .aggregate(core)
     .settings(moduleName := "$name;format="normalize"$-examples")

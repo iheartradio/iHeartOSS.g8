@@ -17,6 +17,11 @@ object Dependencies {
 
   val commonSettings = Seq(
     scalaVersion in ThisBuild := "2.11.7",
+    resolvers ++= Seq(
+      Resolver.sonatypeRepo("releases"),
+      Resolver.sonatypeRepo("snapshots"),
+      Resolver.bintrayRepo("scalaz", "releases")
+    ),
     addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")
   )
 
@@ -24,12 +29,6 @@ object Dependencies {
     libraryDependencies ++= test
   )
 
-  val settings = commonSettings ++ Seq(
-    resolvers ++= Seq(
-      Resolver.sonatypeRepo("releases"),
-      Resolver.sonatypeRepo("snapshots"),
-      Resolver.bintrayRepo("scalaz", "releases")
-    )
-  )
+  val settings = commonSettings 
 
 }
