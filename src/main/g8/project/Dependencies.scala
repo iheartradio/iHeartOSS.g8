@@ -6,9 +6,10 @@ object Dependencies {
     val specs2 = "3.6.6"
   }
 
-
   val shapeless = Seq("com.chuusai" %% "shapeless" % "2.2.5")
+
   val cat = Seq("org.spire-math" %% "cats" % "0.3.0")
+
   val test = Seq(
     "org.specs2" %% "specs2-core" % Versions.specs2 % "test",
     "org.specs2" %% "specs2-mock" % Versions.specs2 % "test"
@@ -16,6 +17,11 @@ object Dependencies {
 
   val commonSettings = Seq(
     scalaVersion in ThisBuild := "2.11.7",
+    resolvers ++= Seq(
+      Resolver.sonatypeRepo("releases"),
+      Resolver.sonatypeRepo("snapshots"),
+      Resolver.bintrayRepo("scalaz", "releases")
+    ),
     addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")
   )
 
@@ -23,13 +29,6 @@ object Dependencies {
     libraryDependencies ++= test
   )
 
-  val settings = commonSettings ++ Seq(
-    libraryDependencies ++= shapeless ++ cat,
-    resolvers ++= Seq(
-      Resolver.sonatypeRepo("releases"),
-      Resolver.sonatypeRepo("snapshots"),
-      Resolver.bintrayRepo("scalaz", "releases")
-    )
-  )
+  val settings = commonSettings 
 
 }
