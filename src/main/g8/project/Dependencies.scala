@@ -3,32 +3,24 @@ import sbt._
 
 object Dependencies {
   object Versions {
-    val specs2 = "3.6.6"
+    val scalatest = "3.0.0"
   }
-
-  val shapeless = Seq("com.chuusai" %% "shapeless" % "2.2.5")
-
-  val cat = Seq("org.spire-math" %% "cats" % "0.3.0")
-
   val test = Seq(
-    "org.specs2" %% "specs2-core" % Versions.specs2 % "test",
-    "org.specs2" %% "specs2-mock" % Versions.specs2 % "test"
+    libraryDependencies += "org.scalatest" %% "scalatest" % Versions.scalatest % "test"
   )
 
   val commonSettings = Seq(
-    scalaVersion in ThisBuild := "2.11.7",
+    scalaVersion in ThisBuild := "2.11.8",
     resolvers ++= Seq(
       Resolver.sonatypeRepo("releases"),
       Resolver.sonatypeRepo("snapshots"),
       Resolver.bintrayRepo("scalaz", "releases")
     ),
-    addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.7.1")
+    addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.3")
   )
 
-  val testSettings = commonSettings ++ Seq(
+  val settings = commonSettings ++ Seq(
     libraryDependencies ++= test
   )
-
-  val settings = commonSettings 
 
 }
