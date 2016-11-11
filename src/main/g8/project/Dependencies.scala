@@ -19,8 +19,7 @@ object Dependencies {
     addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.3")
   )
 
-  val settings = commonSettings ++ Seq(
-    libraryDependencies ++= test
-  )
+  val settings = commonSettings ++ test
+  
 
 }
