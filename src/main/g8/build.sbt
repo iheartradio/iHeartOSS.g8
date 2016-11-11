@@ -1,6 +1,6 @@
  lazy val $name;format="camel"$ = project.in(file("."))
     .settings(moduleName := "root")
-    .aggregate(core, tests)
+    .aggregate(core)
     .settings(Common.settings:_*)
     .settings(Common.noPublishing: _*)
 
